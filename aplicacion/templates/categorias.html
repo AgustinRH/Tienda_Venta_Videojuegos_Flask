@@ -1,0 +1,55 @@
+{% extends "base2.html" %}
+{% block title %}Tienda - Categorías{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Administrar</h3>
+            <div class="d-grid gap-2">
+                <a class="btn btn-secondary" href="{{ url_for('categorias_new') }}">
+                    <span class="bi bi-folder-plus me-1"></span> Nueva Categoría
+                </a>
+                <a class="btn btn-outline-primary" href="{{ url_for('inicio') }}">
+                    <span class="bi bi-house me-1"></span> Volver a Inicio
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h3>Listado de Categorías</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de la Categoría</th>
+                            <th colspan="2" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cat in categorias %}
+                        <tr>
+                            <td style="width: 50px;" class="text-center">{{ cat.id }}</td>
+                            <td><strong>{{ cat.nombre }}</strong></td>
+                            
+                            <td class="text-center" style="width: 150px;">
+                                <a href="{{ url_for('categorias_edit', id=cat.id) }}" class="btn btn-warning btn-sm">
+                                    <span class="bi bi-pencil-square"></span> Modificar
+                                </a>
+                            </td>
+                            <td class="text-center" style="width: 150px;">
+                                <a href="{{ url_for('categorias_delete', id=cat.id) }}" class="btn btn-danger btn-sm">
+                                    <span class="bi bi-trash"></span> Borrar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

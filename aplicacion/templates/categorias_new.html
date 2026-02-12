@@ -1,0 +1,26 @@
+{% extends "base2.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Nueva Categoría{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white py-3 text-center">
+                    <h4 class="mb-0"><span class="bi bi-folder-plus me-2"></span>Gestión de Categorías</h4>
+                </div>
+                <div class="card-body p-4">
+                    {{ render_form(form) }}
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ url_for('categorias_lista') }}" class="btn btn-sm btn-outline-secondary">
+                        Ver listado de categorías
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

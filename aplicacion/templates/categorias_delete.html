@@ -1,0 +1,18 @@
+{% extends "base2.html" %}
+{% block title %}Tienda de Videojuegos{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <h3>Borrar Categoria</h3>
+        <p>¿Estás seguro de borrar la categoría: <strong>{{ cat.nombre }}</strong>?</p>
+        
+        <form class="form-horizontal" method="post">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.si(class="btn btn-danger") }} 
+                {{ form.no(class="btn btn-secondary") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base2.html" %}
+{% block title %}Tienda de Videojuegos{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <h3>Añadir al carrito</h3>
+            <h2>{{ art.nombre }} ({{ "%.2f"|format(art.precio_final()) }} €)</h2>
+            
+            <hr>
+
+            {# Sección para mostrar errores de validación (ej. falta de stock) #}
+            {% for field, errors in form.errors.items() %}
+                <div class="alert alert-danger shadow-sm">
+                    <strong>{{ form[field].label }}:</strong> {{ ', '.join(errors) }}
+                </div>
+            {% endfor %}
+
+            <form class="form-horizontal card p-4 shadow-sm" method="post">
+                <div class="form-group">
+                    {{ form.csrf_token }}
+                    
+                    {# Campo oculto con el ID del artículo #}
+                    {{ form.id() }}
+                    
+                    <div class="mb-3">
+                        {{ form.cantidad.label(class="form-label fw-bold") }}
+                        {{ form.cantidad(size="10", class="form-control", placeholder="Ej. 1") }}
+                        <div class="form-text">Introduce la cantidad que deseas adquirir.</div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-lg btn-primary") }}
+                        <a href="{{ url_for('inicio') }}" class="btn btn-outline-secondary">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+            <br/>
+        </div>
+    </div>
+</div>
+{% endblock %}

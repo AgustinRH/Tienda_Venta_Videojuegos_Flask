@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Acceso Clientes{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="text-center mb-4">
+                <span class="bi bi-shop display-1 text-primary"></span>
+                <h2 class="mt-2">Bienvenido</h2>
+            </div>
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    {{ render_form(form) }}
+                </div>
+            </div>
+            <p class="text-center mt-3 small">
+                ¿No eres miembro? <a href="{{ url_for('registro') }}">Regístrate ahora</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

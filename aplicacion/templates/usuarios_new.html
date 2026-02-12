@@ -1,0 +1,32 @@
+{% extends "base2.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Registro de Usuario{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="mb-0"><span class="bi bi-person-plus me-2"></span>Crear Cuenta</h3>
+                </div>
+                <div class="card-body p-4">
+                    {% if not is_login %}
+                        <p class="text-muted text-center mb-4">Únete a nuestra comunidad de videojuegos</p>
+                    {% endif %}
+                    
+                    {{ render_form(form) }}
+                    
+                    {% if not is_login %}
+                    <hr>
+                    <div class="text-center">
+                        <small>¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión aquí</a></small>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
